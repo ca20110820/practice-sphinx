@@ -1,6 +1,8 @@
 # practice-sphinx
 This repository will be used to practice documentation with Sphinx along with GH Workflows.
 
+Link to the [Official Documentation](https://ca20110820.github.io/practice-sphinx/).
+
 ## References
 - [A “How to” Guide for Sphinx + ReadTheDocs](https://sphinx-rtd-tutorial.readthedocs.io/en/latest/index.html)
 - [John Robertson's Example](https://github.com/Robbozinoz/tic_tac_toe_docs/tree/main)
