@@ -1,9 +1,24 @@
+"""Module containing the Game class.
+
+This will contain a board instance inside as a composition.
+
+It has a general implementation that can be integrated with different UI Views.
+"""
+
 from __future__ import annotations
 
 from tictactoe.board import Board, BoardInvalidMove
 
 
 class Game:
+    """Class representing a Game instance.
+
+    Attributes:
+        player1 (str): Player 1 Name
+        player2 (str): Player 2 Name
+        player_moves (dict): Move labels of each player
+        board (Board): NxN Board
+    """
     def __init__(self, board_size=3, player1: str = "player1", player2: str = "player2", blank_label="?"):
         self._winner = None
         self._player = player1  # Initial player will always be player1
@@ -17,6 +32,11 @@ class Game:
 
     @property
     def winner(self):
+        """Gets the winner of the game, if applicable.
+
+        Returns:
+            str | None: Winner if exists.
+        """
         return self._winner
 
     @property
@@ -41,6 +61,19 @@ class Game:
         self.board.print_grid()
 
     def move(self, row: int, col: int) -> str | None:
+        """Make a move for a current player.
+
+        Args:
+            row (int): The row index of the move.
+            col (int): The column index of the move.
+
+        Returns:
+            str | None: The name of the winning player if there is one, 'finished' if the game is over without a winner,
+            or None if the move is valid & goes to the next game state.
+
+        Raises:
+            BoardInvalidMove: If the move is invalid because a winner has already been determined.
+        """
         # Returns: {self.player1, self.player2, 'finished', None}
 
         if isinstance(self.winner, str):

@@ -1,3 +1,6 @@
+"""Board module. Doesn't care about anyone.
+"""
+
 from __future__ import annotations
 
 from typing import List, Tuple
@@ -9,6 +12,8 @@ class BoardInvalidMove(Exception):
 
 
 class Board:
+    """Class representing a Tic-Tac-Toe board.
+    """
 
     MOVES = ['X', 'O']
 
@@ -25,34 +30,80 @@ class Board:
 
     @property
     def is_board_filled(self) -> bool:
+        """ Check if the board is fully filled.
+
+        Returns:
+            bool: True if the board is filled, False otherwise.
+        """
         return all([elem in self.MOVES for row_ls in self._grid for elem in row_ls])
     
     @property
     def scores(self):
+        """Get the scores for moves 'X' and 'O'.
+
+        Returns:
+            Tuple[int, int]: Number of winning configurations for 'X' and 'O' respectively.
+        """
         return self._options('X'), self._options('O')
 
     @property
     def grid(self):
+        """Get the current grid of the board.
+
+        Returns:
+            List[List[str]]: Current state of the board.
+        """
         return self._grid
 
     def valid_moves(self) -> List[Tuple[int, int]]:
+        """Get a list of valid moves.
+
+        Returns:
+            List[Tuple[int, int]]: List of valid (row, col) cells as 2-Tuples.
+        """
         return [(row, col) for row, col in permutations(range(self.board_size), 2) if
                 self._grid[row][col] == self._blank_label] + \
             [(i, i) for i in range(self.board_size) if self._grid[i][i] == self._blank_label]
 
     def get_column(self, col: int) -> list:
+        """Get elements in the specified column index.
+
+        Args:
+            col (int): Index for the specified column.
+
+        Returns:
+            List[str]: Elements in the specified column.
+        """
         if 0 > col or col > self.board_size - 1:
             raise ValueError(f"Column must be in between [0, {self.board_size - 1}]")
 
         return [row[col] for row in self._grid]
 
     def get_row(self, row: int) -> list:
+        """Get elements in the specified row.
+
+        Args:
+            row (int): Index for the specified row.
+
+        Returns:
+            List[str]: Elements in the specified row.
+        """
         if 0 > row or row > self.board_size - 1:
             raise ValueError(f"Row must be in between [0, {self.board_size - 1}]")
 
         return self._grid[row]
 
     def get_diagonal(self, which_diagonal: int) -> list:
+        """Get elements in the specified diagonal.
+
+        Args:
+            which_diagonal (int): Diagonal identifier (1 or 2).
+                1 Represents the Diagonal From Top Left to Bottom Right
+                2 Represents the Diagonal From Top Right to Bottom Left
+
+        Returns:
+            List[str]: Elements in the specified diagonal.
+        """
         # which_diagonal=1 <==> From Top Left to Bottom Right
         # which_diagonal=2 <==> From Top Right to Bottom Left
 
@@ -102,6 +153,7 @@ class Board:
         return option_count
 
     def print_grid(self) -> None:
+        """Print the current state of the board."""
         horizontal_separator = "-" * (self.board_size + (self.board_size - 1))
 
         for row in self._grid:
@@ -111,6 +163,17 @@ class Board:
         print(horizontal_separator)
 
     def update_grid(self, move: str, row: int, col: int) -> None:
+        """Update the board with the player's move.
+
+        Args:
+            move (str): Player move label ('X' or 'O').
+            row (int): Row index.
+            col (int): Column index.
+
+        Raises:
+            ValueError: If the move label is invalid.
+            BoardInvalidMove: If the specified cells are not valid or the cell is already occupied.
+        """
         # Check Valid Move
         # e.g. If coordinate (0, 0) is anything other than '?', then throw error.
         if move not in self.MOVES:
@@ -127,7 +190,11 @@ class Board:
         self._grid[row][col] = move
 
     def check_win(self) -> str | None:
-        """Check the current state of board and see if there's a winner."""
+        """Check if there's a winner on the board.
+
+        Returns:
+            str | None: Winning move ('X' or 'O') or None if no winner.
+        """
         # Check Diagonals
         for diagonal in [1, 2]:
             for move in self.MOVES:
