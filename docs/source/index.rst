@@ -11,7 +11,3 @@ Official Tic-Tac-Toe Documentation
    :caption: Contents:
 
    modules
-
-.. * :ref:`genindex`
-.. * :ref:`modindex`
-.. * :ref:`search`
