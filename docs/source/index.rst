@@ -10,7 +10,7 @@ Official Tic-Tac-Toe Documentation
    :maxdepth: 2
    :caption: Contents:
 
-   tictactoe
+   modules
 
 .. * :ref:`genindex`
 .. * :ref:`modindex`
