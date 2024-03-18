@@ -11,3 +11,7 @@ Official Tic-Tac-Toe Documentation
    :caption: Contents:
 
    tictactoe
+
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
