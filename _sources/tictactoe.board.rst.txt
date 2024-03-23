@@ -1,0 +1,7 @@
+tictactoe.board module
+======================
+
+.. automodule:: tictactoe.board
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+tictactoe.game module
+=====================
+
+.. automodule:: tictactoe.game
+   :members:
+   :undoc-members:
+   :show-inheritance:

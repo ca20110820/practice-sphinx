@@ -1,0 +1,20 @@
+tictactoe package
+=================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   tictactoe.board
+   tictactoe.game
+   tictactoe.main
+
+Module contents
+---------------
+
+.. automodule:: tictactoe
+   :members:
+   :undoc-members:
+   :show-inheritance:
