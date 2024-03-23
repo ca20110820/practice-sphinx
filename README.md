@@ -24,7 +24,7 @@ I modified some scripts tailored to match the project file structure pattern des
 │   ├── make.bat
 │   └── Makefile
 ├── src/
-│   └── some-package/
+│   └── some_package/
 │       ├── __init__.py
 │       └── *.py
 └── tests/
